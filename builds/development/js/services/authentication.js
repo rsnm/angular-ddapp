@@ -22,9 +22,9 @@ myApp.factory('Authentication', function($firebaseArray, $rootScope, $firebaseAu
                 email: user.email,
                 password: user.password
             }).then(function(regUser){
-                var ref = new Firebase(FIREBASE_URL+'users');
+                console.log("reguser: ", regUser);
+                var ref = new Firebase(FIREBASE_URL+'users/'+regUser.uid);
                 var firebaseUsers = $firebaseArray(ref);
-
                 var userInfo = {
                     date: Firebase.ServerValue.TIMESTAMP,
                     regUser: regUser.uid,
@@ -32,13 +32,10 @@ myApp.factory('Authentication', function($firebaseArray, $rootScope, $firebaseAu
                     lastname: user.lastname,
                     email: user.email
                 };
-
-                firebaseUsers.$add(userInfo);
-
+                ref.set(userInfo);
             });//promise
         }, //register
         logout: function(){
-            console.log('calling unauth');
             return simpleLogin.$unauth();
         }
     }; //obj
