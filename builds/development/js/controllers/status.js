@@ -16,19 +16,7 @@ myApp.controller('StatusController', function(
     auth.$onAuth(function (authUser) {
         if(authUser){
             var ref = new Firebase(FIREBASE_URL+'users/'+authUser.uid);
-            var user;
-            $rootScope.currentUser = user = $firebaseObject(ref);
-            console.log("user: ", user);
-
-            //user.$loaded().then(function (data) {
-            //    console.log("data: ", data);
-            //    $rootScope.currentUser = user;
-            //}).catch(function(error) {
-            //    console.log("error: ", error);
-            //});
-            //user.$loaded().then(function () {
-            //    $rootScope.currentUser = user;
-            //});
+            $rootScope.currentUser = $firebaseObject(ref);
         }else{
             $rootScope.currentUser = null;
         }

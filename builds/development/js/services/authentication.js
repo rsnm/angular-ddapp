@@ -24,7 +24,6 @@ myApp.factory('Authentication', function($firebaseArray, $rootScope, $firebaseAu
             }).then(function(regUser){
                 console.log("reguser: ", regUser);
                 var ref = new Firebase(FIREBASE_URL+'users/'+regUser.uid);
-                var firebaseUsers = $firebaseArray(ref);
                 var userInfo = {
                     date: Firebase.ServerValue.TIMESTAMP,
                     regUser: regUser.uid,
