@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Angular DD App</title>
+
+    <!-- Bootstrap -->
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="js/lib/angular/angular.js"></script>
+    <script src="js/lib/angular/angular-route.min.js"></script>
+    <script src="js/lib/angular/angular-animate.min.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <!-- Firebase -->
+    <!--<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>-->
+    <script src="js/lib/firebase/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <!--<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>-->
+    <script src="js/lib/firebase/angularfire.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/services/authentication.js"></script>
+    <script src="js/controllers/registration.js"></script>
+    <script src="js/controllers/status.js"></script>
+    <script src="js/controllers/meetings.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <nav class="cf" ng-include="'views/nav.html'"
+            ng-controller="StatusController"></nav>
+</header>
+<div class="page">
+    <div class="userinfo" ng-controller="StatusController"
+            ng-show="currentUser">
+        <span class="user">
+            Hi {{ currentUser.firstname }}
+        </span>
+        <a href="#" ng-click="logout()">logout</a>
+    </div>
+    <main class="cf" ng-view></main>
+</div>
+</body>
+</html>

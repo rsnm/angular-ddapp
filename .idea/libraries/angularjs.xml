@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="angularjs" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/builds/development/js/lib/angular/angular.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/builds/development/js/lib/angular/angular.js" />
+      <root url="file://$PROJECT_DIR$/builds/development/js/lib/angular/angular-route.min.js" />
+      <root url="file://$PROJECT_DIR$/builds/development/js/lib/angular/angular-animate.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
