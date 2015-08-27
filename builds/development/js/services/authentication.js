@@ -22,7 +22,6 @@ myApp.factory('Authentication', function($firebaseArray, $rootScope, $firebaseAu
                 email: user.email,
                 password: user.password
             }).then(function(regUser){
-                console.log("reguser: ", regUser);
                 var ref = new Firebase(FIREBASE_URL+'users/'+regUser.uid);
                 var userInfo = {
                     date: Firebase.ServerValue.TIMESTAMP,
@@ -31,7 +30,9 @@ myApp.factory('Authentication', function($firebaseArray, $rootScope, $firebaseAu
                     lastname: user.lastname,
                     email: user.email
                 };
-                ref.set(userInfo);
+                ref.set(userInfo, function(err){
+                    console.log("An error occurred: ", err);
+                });
             });//promise
         }, //register
         logout: function(){
