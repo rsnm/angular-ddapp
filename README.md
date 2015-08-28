@@ -8,6 +8,7 @@
 5. Run the Gulp command `> gulp`
 6. Fire up your browser at `http://localhost:8080`
 
+This is a tutorial app created by Ray Villalobos for Lynda.com
 API Reference:
 Angular: https://docs.angularjs.org/api
 Firebase (angularfire): https://www.firebase.com/docs/web/libraries/angular/api.html

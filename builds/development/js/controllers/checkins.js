@@ -1,25 +1,31 @@
 /* global myApp, Firebase, console, alert */
 
-myApp.controller('StatusController', function(
-    $scope, $rootScope, $firebaseAuth, $firebaseObject, FIREBASE_URL, $location, Authentication){
+myApp.controller('CheckInsController', function(
+    $scope, $firebaseArray, FIREBASE_URL, $location, $routeParams){
 
     "use strict";
 
-    var ref = new Firebase(FIREBASE_URL),
-        auth = $firebaseAuth(ref);
+    $scope.whichMeeting = $routeParams.mId;
+    $scope.whichUser = $routeParams.uId;
 
-    $scope.logout = function(){
-        Authentication.logout();
-        $location.path('/login');
-    };
+    var ref = new Firebase(FIREBASE_URL+'/users/'+$scope.whichUser+
+        '/meetings/' + $scope.whichMeeting + '/checkins');
 
-    auth.$onAuth(function (authUser) {
-        if(authUser){
-            var ref = new Firebase(FIREBASE_URL+'users/'+authUser.uid);
-            $rootScope.currentUser = $firebaseObject(ref);
-        }else{
-            $rootScope.currentUser = null;
-        }
-    });
+    $scope.checkins = $firebaseArray(ref);
 
-}); //StatusController
+    $scope.addCheckin = function(){
+        var checkinsObj = $firebaseArray(ref);
+        var myData = {
+            firstname: $scope.user.firstname,
+            lastname: $scope.user.lastname,
+            email: $scope.user.email,
+            date: Firebase.ServerValue.TIMESTAMP
+        };
+
+        checkinsObj.$add(myData).then(function(ref){
+            $location.path('/checkins/' + $scope.whichUser + '/' +
+            $scope.whichMeeting + '/checkinsList');
+        });
+    }; //addCheckin
+
+}); //CheckinsController

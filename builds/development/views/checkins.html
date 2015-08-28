@@ -1,7 +1,8 @@
 <section class="register">
-    <form name="myform" ng-submit="register()" novalidate>
-        <h1>Register</h1>
-        <p>To access the awesomeness!</p>
+    <form name="myform" ng-submit="addCheckin()" novalidate>
+        <h1>Check-in</h1>
+        <p>Fill out this form to check-in to our meeting or go
+        <a ng-href="#/meetings">back to meetings</a> </p>
 
         <p class="error formerror" ng-show="message">{{ message }}</p>
 
@@ -26,14 +27,6 @@
             Must be a valid email
         </p>
 
-        <input type="password" name="password" placeholder="Password" ng-model="user.password"
-               ng-required="true" />
-        <p class="error validationerror"
-           ng-show="myform.password.$invalid && myform.password.$touched">
-            Password is required
-        </p>
-
-        <button ng-disabled="myform.$invalid" type="submit" class="btn">Register</button>
-        <p>Or <a href="#/login">login</a> </p>
+        <button ng-disabled="myform.$invalid" type="submit" class="btn">Check-in</button>
     </form>
 </section>

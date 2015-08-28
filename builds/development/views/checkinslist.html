@@ -1,32 +1,15 @@
-<section class="register">
-    <form name="myform" ng-submit="addCheckin()" novalidate>
-        <h1>Check-in</h1>
-        <p>Fill out this form to check-in to our meeting or go
-        <a ng-href="#/meetings">back to meetings</a> </p>
-
-        <p class="error formerror" ng-show="message">{{ message }}</p>
-
-        <input type="firstname" name="firstname" placeholder="First Name" autofocus ng-model="user.firstname"
-               ng-required="true" />
-        <p class="error validationerror"
-           ng-show="myform.firstname.$invalid && myform.firstname.$touched">
-            First Name is required
-        </p>
-
-        <input type="lastname" name="lastname" placeholder="Last Name" autofocus ng-model="user.lastname"
-               ng-required="true" />
-        <p class="error validationerror"
-           ng-show="myform.lastname.$invalid && myform.lastname.$touched">
-            Last Name is required
-        </p>
-
-        <input type="email" name="email" placeholder="Email" autofocus ng-model="user.email"
-               ng-required="true" />
-        <p class="error validationerror"
-           ng-show="myform.email.$invalid && myform.email.$touched">
-            Must be a valid email
-        </p>
-
-        <button ng-disabled="myform.$invalid" type="submit" class="btn">Check-in</button>
-    </form>
-</section>
+<div class="checkinslist">
+    <h1>Check-ins</h1>
+    <ul class="userlist cf">
+        <li ng-repeat="checkin in checkins">
+            <div class="checkin">
+                <div class="info">
+                    <h2>{{checkin.firstname}} {{checkin.lastname}}</h2>
+                    <div class="date">
+                        {{checkin.date | date:"MMM d, yy h:m:a"}}
+                    </div><!--date-->
+                </div><!--info-->
+            </div><!--checkin-->
+        </li>
+    </ul><!--userlist-->
+</div><!--checklist-->
